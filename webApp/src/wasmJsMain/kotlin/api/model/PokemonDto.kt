@@ -3,7 +3,7 @@ package api.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Pokemon(
+data class PokemonDto(
     val abilities: List<Ability>,
     val base_experience: Int,
     val forms: List<Form>,
