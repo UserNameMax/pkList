@@ -1,7 +1,9 @@
 package model
 
 import androidx.compose.ui.graphics.ImageBitmap
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Pokemon(
     val height: Int,
     val id: Int,

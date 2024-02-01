@@ -43,6 +43,7 @@ kotlin {
     }
 
     val ktorVersion = "3.0.0-wasm2"
+    val decomposeVersion = "3.0.0-alpha05"
 
     sourceSets {
         val wasmJsMain by getting {
@@ -60,6 +61,8 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+                implementation ("com.arkivanov.decompose:decompose:$decomposeVersion")
+                implementation("com.arkivanov.decompose:extensions-compose:$decomposeVersion")
 
             }
         }
