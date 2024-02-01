@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization")
 }
 
 //val copyJsResources = tasks.create("copyJsResourcesWorkaround", Copy::class.java) {
@@ -41,16 +42,25 @@ kotlin {
         binaries.executable()
     }
 
+    val ktorVersion = "3.0.0-wasm2"
+
     sourceSets {
         val wasmJsMain by getting {
             dependencies {
-                implementation(project(":shared"))
                 implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.material3)
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-js:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+
             }
         }
     }

@@ -19,5 +19,4 @@ pluginManagement {
 
 rootProject.name = "pkList"
 
-include(":shared")
 include(":webApp")
