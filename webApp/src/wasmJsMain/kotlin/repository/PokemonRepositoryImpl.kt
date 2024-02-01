@@ -23,7 +23,7 @@ class PokemonRepositoryImpl(private val pokeApi: PokeApi) : PokemonRepository {
                     name = pokemonDto.name,
                     order = pokemonDto.order,
                     weight = pokemonDto.weight,
-                    species = species.flavor_text_entries.first().flavor_text,
+                    species = species.flavor_text_entries.first().flavor_text.replace("\n", ""),
                     sprites = getBitmap(pokemonDto.sprites.front_default ?: ""),
                     hp = pokemonDto.stats.find { it.stat.name == "hp" }?.base_stat ?: 0,
                     attack = pokemonDto.stats.find { it.stat.name == "attack" }?.base_stat ?: 0,
